@@ -60,7 +60,7 @@ echo "[*********************************]"
 echo ""
 echo "WELCOME"
 sleep 2
-echo "Krushed Installer v0.0.2 By Vinal Krush"
+echo "Krushed Installer v0.0.3 By Vinal Krush"
 sleep 2
 clear
 
@@ -102,9 +102,9 @@ clear
 #read CPUTHREAD
 #clear
 
-echo "Would you like to pre-install BetterFox? (y/n)"
-read BETTERFOX
-clear
+#echo "Would you like to pre-install BetterFox? (y/n)"
+#read BETTERFOX
+#clear
 
 # DISK SETUP
 echo "####################################"
@@ -283,7 +283,7 @@ echo ""
 echo ""
 echo ""
 echo ""
-sleep 5
+sleep 2
 clear
 
 # Select Kernel & Drivers
