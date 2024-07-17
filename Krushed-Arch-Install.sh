@@ -324,7 +324,7 @@ echo "|-------------------------------------------------------------------------
 sleep 5
 clear
 
-pacstrap -K --noconfirm --needed /mnt base base-devel
+pacstrap -K /mnt base base-devel
 sleep 2
 clear
 
@@ -338,13 +338,13 @@ echo "-------------------------------------------------------------------------"
 
 if [[ $KERN == '1' ]]
 then
-	pacstrap -K --noconfirm --needed /mnt linux linux-firmware linux-headers
+	pacstrap -K /mnt linux linux-firmware linux-headers
 elif [[ $KERN == '2' ]]
 then
-	pacstrap -K --noconfirm --needed /mnt linux-zen linux-firmware linux-headers
+	pacstrap -K /mnt linux-zen linux-firmware linux-headers
 elif [[ $KERN == '3' ]]
 then
-	pacstrap -K --noconfirm --needed /mnt linux-hardened linux-firmware linux-headers
+	pacstrap -K  /mnt linux-hardened linux-firmware linux-headers
 fi
 cp -f ./etc/pacman.conf /mnt/etc/
 cp -f ./etc/mkinitcpio.conf /mnt/etc/
@@ -379,20 +379,21 @@ sleep 2
 if [[ $DPD == '1' ]]
 # Nvidia Drivers
 then
-	pacstrap -K --noconfirm --needed /mnt nvidia-dkms nvidia nvidia-utils lib32-nvidia-utils
+	pacstrap -K /mnt nvidia-dkms nvidia nvidia-utils lib32-nvidia-utils
 
 elif [[ $DPD == '2' ]]
 # Intel Drivers
 then 
-	pacstrap -K --noconfirm --needed /mnt mesa lib32-mesa vulkan-intel lib32-vulkan-intel
+	pacstrap -K /mnt mesa lib32-mesa vulkan-intel lib32-vulkan-intel
 
 elif [[ $DPD == '3' ]]
 # AMD Drivers
 then
-	pacstrap -K --noconfirm --needed /mnt mesa lib32-mesa xf86-video-amdgpu vulkan-radeon libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau
+	pacstrap -K /mnt mesa lib32-mesa xf86-video-amdgpu vulkan-radeon libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau
 
 elif [[ $DPD == '4' ]]
 # Skipping Display Driver Install
+then
 	echo "No Driver Selected"
 	echo "Skipping..."
 	sleep 3
@@ -423,15 +424,15 @@ echo "---                                                                   ---"
 echo "-------------------------------------------------------------------------"
 sleep 2
 
-pacstrap -K --noconfirm --needed /mnt grub os-prober efibootmgr vim git xorg xorg-server openssh wayland dhclient networkmanager
+pacstrap -K /mnt grub os-prober efibootmgr vim git xorg xorg-server openssh wayland dhclient networkmanager
 
 # Installing UCODE
 if [[ $CPUPLAT == '1' ]]
 then
-	pacstrap -K --noconfirm --needed /mnt amd-ucode
+	pacstrap -K /mnt amd-ucode
 elif [[ $CPUPLAT == '2' ]]
 then
-	pacstrap -K --noconfirm --needed /mnt intel-ucode
+	pacstrap -K /mnt intel-ucode
 
 sleep 2
 
@@ -462,7 +463,7 @@ cat <<REALEND > /mnt/home/$USER/Krushed-Installer/krushed-installer.sh
 clear
 
 loadkeys us
-pacman -Syu --noconfirm --needed
+pacman -Syu
 clear
 hwclock --systohc
 sed -i 's/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8' /etc/locale.gen
