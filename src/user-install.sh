@@ -11,18 +11,18 @@
 # Running this code most likely will do nothing
 # but still don't unless you just wanna lose your system
 
-SYSNAME= jq .SYSNAME /var/.tmp/.Krushed-Installer/.install.json
-USER= jq .USER /var/.tmp/.Krushed-Installer/.install.json
-PASSWORD= jq .PASSWORD /var/.tmp/.Krushed-Installer/.install.json
-ROOTPASSWORD= jq .ROOTPASSWORD /var/.tmp/.Krushed-Installer/.install.json
-SYSDRIVE= jq .SYSDRIVE /var/.tmp/.Krushed-Installer/.install.json
-CPUPLAT= jq .CPUPLAT /var/.tmp/.Krushed-Installer/.install.json
-BETTERFOX= jq .BETTERFOX /var/.tmp/.Krushed-Installer/.install.json
-KERN= jq .KERN /var/.tmp/.Krushed-Installer/.install.json
-DPD= jq .DPD /var/.tmp/.Krushed-Installer/.install.json
-KRUSHED= jq .KRUSHED /var/.tmp/.Krushed-Installer/.install.json
-PATHH= jq .PATHH /var/.tmp/.Krushed-Installer/.install.json
-INSTALLER_PATH= jq .INSTALLER_PATH /var/.tmp/.Krushed-Installer/.install.json
+SYSNAME= jq .SYSNAME /.Krushed-Installer/.install.json
+USER= jq .USER /.Krushed-Installer/.install.json
+PASSWORD= jq .PASSWORD /.Krushed-Installer/.install.json
+ROOTPASSWORD= jq .ROOTPASSWORD /.Krushed-Installer/.install.json
+SYSDRIVE= jq .SYSDRIVE /.Krushed-Installer/.install.json
+CPUPLAT= jq .CPUPLAT /.Krushed-Installer/.install.json
+BETTERFOX= jq .BETTERFOX /.Krushed-Installer/.install.json
+KERN= jq .KERN /.Krushed-Installer/.install.json
+DPD= jq .DPD /.Krushed-Installer/.install.json
+KRUSHED= jq .KRUSHED /.Krushed-Installer/.install.json
+PATHH= jq .PATHH /.Krushed-Installer/.install.json
+INSTALLER_PATH= jq .INSTALLER_PATH /.Krushed-Installer/.install.json
 
 clear
 git clone https://aur.archlinux.org/yay
@@ -68,7 +68,7 @@ fi
 cd
 if [[ $KRUSHED == '1' ]]
 then
-    /var/.tmp/.Krushed-Installer/krushed-install.sh
+    /.Krushed-Installer/krushed-install.sh
 else
     exit
 fi

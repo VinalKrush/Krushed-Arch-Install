@@ -155,7 +155,7 @@ install_json=$(cat <<EOF
     	"DPD": "${DPD}",
     	"KRUSHED": "${KRUSHED}",
 		"PATHH": "${PATHH}",
-		"INSTALLER_PATH": "/var/.tmp/.Krushed-Installer/"
+		"INSTALLER_PATH": "/.Krushed-Installer/"
 	}
 EOF
 )
@@ -365,9 +365,9 @@ sleep 5
 clear
 
 pacstrap -K /mnt base base-devel jq
-mkdir -p /mnt/var/.tmp/.Krushed-Installer/
-cp -f $PATHH/.tmp/.install.json /mnt/var/.tmp/.Krushed-Installer/
-cp -f $PATHH/src/lightdm /mnt/var/.tmp/.Krushed-Installer/
+mkdir -p /mnt/.Krushed-Installer/
+cp -f $PATHH/.tmp/.install.json /mnt/.Krushed-Installer/
+cp -f $PATHH/src/lightdm /mnt/.Krushed-Installer/
 sleep 2
 clear
 
@@ -454,15 +454,15 @@ genfstab -U /mnt >> /mnt/etc/fstab
 clear
 
 # Base System Setup
-touch /mnt/var/.tmp/.Krushed-Installer/THANK YOU FOR USING KRUSHED INSTALLER
-touch /mnt/var/.tmp/.Krushed-Installer/IT IS SAFE TO DELETE THIS FOLDER
-cp -f $PATHH/src/base-install.sh /mnt/var/.tmp/.Krushed-Installer/
-cp -f $PATHH/src/krushed-install.sh /mnt/var/.tmp/.Krushed-Installer/
-cp -f $PATHH/src/user-install.sh /mnt/var/.tmp/.Krushed-Installer/
-cp -f $PATHH/src/lightdm /mnt/var/.tmp/.Krushed-Installer/
-chmod +x /mnt/var/.tmp/.Krushed-Installer/base-install.sh
-chmod +x /mnt/var/.tmp/.Krushed-Installer/krushed-install.sh
-chmod +x /mnt/var/.tmp/.Krushed-Installer/user-install.sh
+touch /mnt/.Krushed-Installer/THANK YOU FOR USING KRUSHED INSTALLER
+touch /mnt/.Krushed-Installer/IT IS SAFE TO DELETE THIS FOLDER
+cp -f $PATHH/src/base-install.sh /mnt/.Krushed-Installer/
+cp -f $PATHH/src/krushed-install.sh /mnt/.Krushed-Installer/
+cp -f $PATHH/src/user-install.sh /mnt/.Krushed-Installer/
+cp -f $PATHH/src/lightdm /mnt/.Krushed-Installer/
+chmod +x /mnt/.Krushed-Installer/base-install.sh
+chmod +x /mnt/.Krushed-Installer/krushed-install.sh
+chmod +x /mnt/.Krushed-Installer/user-install.sh
 MIRROR="us"
 cp -f $PATHH/mirrors/${MIRROR}/mirrorlist /mnt/etc/pacman.d/
 
@@ -480,7 +480,7 @@ echo "|@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-----------------------
 sleep 5
 clear
 
-arch-chroot /mnt bash /mnt/var/.tmp/.Krushed-Installer/base-install.sh
+arch-chroot /mnt bash /mnt/.Krushed-Installer/base-install.sh
 
 cp -f $PATHH/home/user/.zshrc /mnt/home/$USER/
 

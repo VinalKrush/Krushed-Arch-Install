@@ -11,18 +11,18 @@
 # Running this code most likely will do nothing
 # but still don't unless you just wanna lose your system
 
-SYSNAME= jq .SYSNAME /var/.tmp/.Krushed-Installer/.install.json
-USER= jq .USER /var/.tmp/.Krushed-Installer/.install.json
-PASSWORD= jq .PASSWORD /var/.tmp/.Krushed-Installer/.install.json
-ROOTPASSWORD= jq .ROOTPASSWORD /var/.tmp/.Krushed-Installer/.install.json
-SYSDRIVE= jq .SYSDRIVE /var/.tmp/.Krushed-Installer/.install.json
-CPUPLAT= jq .CPUPLAT /var/.tmp/.Krushed-Installer/.install.json
-BETTERFOX= jq .BETTERFOX /var/.tmp/.Krushed-Installer/.install.json
-KERN= jq .KERN /var/.tmp/.Krushed-Installer/.install.json
-DPD= jq .DPD /var/.tmp/.Krushed-Installer/.install.json
-KRUSHED= jq .KRUSHED /var/.tmp/.Krushed-Installer/.install.json
-PATHH= jq .PATHH /var/.tmp/.Krushed-Installer/.install.json
-INSTALLER_PATH= jq .INSTALLER_PATH /var/.tmp/.Krushed-Installer/.install.json
+SYSNAME= jq .SYSNAME /.Krushed-Installer/.install.json
+USER= jq .USER /.Krushed-Installer/.install.json
+PASSWORD= jq .PASSWORD /.Krushed-Installer/.install.json
+ROOTPASSWORD= jq .ROOTPASSWORD /.Krushed-Installer/.install.json
+SYSDRIVE= jq .SYSDRIVE /.Krushed-Installer/.install.json
+CPUPLAT= jq .CPUPLAT /.Krushed-Installer/.install.json
+BETTERFOX= jq .BETTERFOX /.Krushed-Installer/.install.json
+KERN= jq .KERN /.Krushed-Installer/.install.json
+DPD= jq .DPD /.Krushed-Installer/.install.json
+KRUSHED= jq .KRUSHED /.Krushed-Installer/.install.json
+PATHH= jq .PATHH /.Krushed-Installer/.install.json
+INSTALLER_PATH= jq .INSTALLER_PATH /.Krushed-Installer/.install.json
 
 cd
 clear
@@ -74,5 +74,5 @@ sudo grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=
 
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
-su $USER -c /var/.tmp/.Krushed-Installer/user-install.sh
+su $USER -c /.Krushed-Installer/user-install.sh
 exit
