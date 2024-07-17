@@ -98,8 +98,7 @@ read -s ROOTPASSWORD
 clear
 
 lsblk
-echo "Please Enter The Drive You Want To Install Linux On: (Example: nvme0n1 or sda)"
-echo "DO NOT INCLUDE /dev/"
+echo "Please Enter The Drive You Want To Install Linux On: (Example: /dev/nvme0n1 or /dev/sda)"
 read SYSDRIVE
 clear
 
@@ -181,16 +180,15 @@ echo ""
 echo "Press Enter To Continue (Note This Will Wipe Your Drive) Or Press CTRL + C To Cancel"
 read ENTER
 clear
-wipefs -a /dev/${SYSDRIVE}
+wipefs -a ${SYSDRIVE}
 sleep 1
 clear
-cfdisk /dev/${SYSDRIVE}
+cfdisk ${SYSDRIVE}
 clear
 
 sleep .2
 lsblk
-echo "Please Define The Boot Partiion (Example sda1 or nvme0n1p1)"
-echo "DO NOT INCLUDE /dev/"
+echo "Please Define The Boot Partiion (Example /dev/sda1 or /dev/nvme0n1p1)"
 read BOOT
 clear
 
