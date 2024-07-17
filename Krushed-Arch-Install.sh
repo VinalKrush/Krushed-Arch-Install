@@ -661,7 +661,6 @@ sudo systemctl enable libvirtd
 
 sudo virsh net-autostart default
 sudo virsh net-start default
-exit
 REALEND
 
 su $USER -c /mnt/home/$USER/Krushed-Installer/user-installs.sh
