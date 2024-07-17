@@ -42,7 +42,7 @@ echo "Loading:"
 echo "[*******************--------------]"
 
 touch $PATHH/.tmp/.install.json
-echo "Installing Dependency"
+echo "Installing Dependency"				
 pacman -S --needed --noconfirm jq
 sleep 1
 clear
