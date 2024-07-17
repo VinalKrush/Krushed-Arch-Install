@@ -78,12 +78,12 @@ echo "Please enter a username:"
 read USER
 clear
 
-echo "Please enter a password:"
-read PASSWORD
+echo "Please enter a password: (Password Is Hidden)"
+read -s PASSWORD
 clear
 
-echo "Please enter a root password: (Leave blank to disable root)"
-read ROOTPASSWORD
+echo "Please enter a root password: (Leave blank to disable root) (Password Is Hidden)"
+read -s ROOTPASSWORD
 clear
 
 lsblk
@@ -451,8 +451,10 @@ clear
 
 # Base System Setup
 
+cp -f ./etc/pacman.conf /mnt/etc/pacman.conf
+cp -f ./etc/mkinitcpio.conf /mnt/etc/mkinitcpio.conf
 
-mkdir /mnt/home/$USER/Krushed-Installer
+mkdir -p /mnt/home/$USER/Krushed-Installer
 touch /mnt/home/$USER/Krushed-Installer/THANK YOU FOR USING KRUSHED INSTALLER
 touch /mnt/home/$USER/Krushed-Installer/IT IS SAFE TO DELETE THIS FOLDER
 
