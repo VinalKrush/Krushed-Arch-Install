@@ -96,4 +96,4 @@ echo "2. INTEL"
 read CPUPLAT
 clear
 exit
-# DISK SETUP
+# DISK SETUPs
