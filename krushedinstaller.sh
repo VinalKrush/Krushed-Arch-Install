@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 
-#PATH=${PWD}
+
 clear
 echo "##################################"
 echo "###                            ###"
@@ -12,6 +12,7 @@ echo ""
 echo "Loading:"
 echo "[*--------------------------------]"
 
+PATH=${PWD}
 pacman -Sy --noconfirm --nopregressbar
 mkdir $PATH/.tpm/
 
