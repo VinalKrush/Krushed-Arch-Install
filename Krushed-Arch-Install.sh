@@ -302,7 +302,7 @@ clear
 
 # Last Step
 echo "LAST STEP!"
-echo" Do You Want This To Be A Minimal Krushed Install? (y/n)"
+echo "Do You Want This To Be A Minimal Krushed Install? (y/n)"
 read KRUSHED
 clear
 
