@@ -32,10 +32,10 @@ makepkg -si --noconfirm
 cd
 sudo rm -rf yay
 
-if [[ $BETTERFOX == 'y']]
+if [[ $BETTERFOX == 'y' ]]
 then
 	git clone https://github.com/yokoffing/Betterfox.git
-elif [[ $BETTERFOX == 'n']]
+elif [[ $BETTERFOX == 'n' ]]
 then
 	echo "Not Installing BetterFox"
 fi
@@ -61,7 +61,7 @@ yay -Syu --needed --noconfirm pipewire lib32-pipewire wireplumber pipewire-audio
 
 sudo systemctl enable bluetooth.service
 
-if [[ $DPD == '1']]
+if [[ $DPD == '1' ]]
 then
 	sudo systemctl enable nvidia-resume.service
 fi

@@ -502,7 +502,7 @@ clear
 echo "The install process is complete."
 echo "Would you like to reboot now? (y/n)"
 read REBOOTSYS
-if [[ $REBOOTSYS == 'y']]
+if [[ $REBOOTSYS == 'y' ]]
 then
 	clear
 	echo "Unplug the Arch ISO USB, and press ENTER"
@@ -510,7 +510,7 @@ then
 	swapoff -A
 	umount -R /mnt
 	reboot now
-elif [[ $REBOOTSYS == 'n']]
+elif [[ $REBOOTSYS == 'n' ]]
 then
 	clear
 	echo "Install Complete"

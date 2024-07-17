@@ -15,15 +15,15 @@ INSTALLER_PATH= jq -r .INSTALLER_PATH /mnt/.Krushed-Installer/.install.json
 clear
 
 
-if [[ $KERN == '2']]
+if [[ $KERN == '2' ]]
 then
 	pacstrap -K /mnt linux-zen linux-firmware linux-headers
 
-elif [[ $KERN == '3']]
+elif [[ $KERN == '3' ]]
 then
 	pacstrap -K /mnt linux-hardened linux-firmware linux-headers
 
-elif [[ $KERN == '4']]
+elif [[ $KERN == '4' ]]
 then
 	pacstrap -K /mnt linux-lts linux-firmware linux-headers
 
