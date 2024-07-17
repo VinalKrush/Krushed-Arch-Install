@@ -32,6 +32,7 @@ then
 	exit
 elif [[ $PERM == 'y' ]]
 then
+	clear
 else
 	clear
 	echo "INVALID OPTION. CACELLED"
