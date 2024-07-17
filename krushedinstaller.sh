@@ -138,7 +138,7 @@ clear
 echo "What Type Of Install Should This Be"
 echo "1. Krushed Install"
 echo "2. Minimal"
-read KRUSHED
+read KRUSHED	
 clear
 
 # Making Tmp File For Other .sh
