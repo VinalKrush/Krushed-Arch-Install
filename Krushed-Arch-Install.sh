@@ -60,11 +60,11 @@ echo "[*********************************]"
 echo ""
 echo "WELCOME"
 sleep 2
-echo "Krushed Installer v0.0.1 By Vinal Krush"
+echo "Krushed Installer v0.0.2 By Vinal Krush"
 sleep 2
 clear
 
-sed -i 's/^#ParallelDownloads = 5/ParallelDownloads = 20/' /etc/pacman.conf
+cp -f /root/Krushed-Arch-Install/etc/pacman.conf /etc/
 pacman -Sy
 loadkeys us
 timedatectl
@@ -354,9 +354,9 @@ elif [[ $KERN == '3' ]]
 then
 	pacstrap -K  /mnt linux-hardened linux-firmware linux-headers
 fi
-cp -f /root/etc/pacman.conf /mnt/etc/
-cp -f /root/etc/mkinitcpio.conf /mnt/etc/
-cp -f /root/etc/makepkg.conf /mnt/etc/
+cp -f /root/Krushed-Arch-Install/etc/pacman.conf /mnt/etc/
+cp -f /root/Krushed-Arch-Install/etc/mkinitcpio.conf /mnt/etc/
+cp -f /root/Krushed-Arch-Install/etc/makepkg.conf /mnt/etc/
 
 sleep 2
 clear
@@ -697,3 +697,4 @@ elif [[ $REBOOTSYS == 'n']]
 	clear
 	echo "Install Complete"
 	echo "Feel Free To Restart Whenever You Like"
+fi
