@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-			
-# START UP
-PATH=${PWD}
+
+
+#PATH=${PWD}
 clear
 echo "##################################"
 echo "###                            ###"
