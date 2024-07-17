@@ -124,7 +124,10 @@ sleep 2
 echo ""
 echo "Press Enter To Continue (Note This Will Wipe Your Drive) Or Press CTRL + C To Cancel"
 read ENTER
+clear
 wipefs -a ${SYSDRIVE}
+sleep 1
+clear
 cfdisk ${SYSDRIVE}
 clear
 
