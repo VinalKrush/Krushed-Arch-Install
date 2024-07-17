@@ -15,7 +15,7 @@ echo "[*--------------------------------]"
 PATHH=${PWD}
 echo "Updating Package Lists"	
 pacman -Sy --noconfirm
-mkdir $PATHH/.tpm/
+mkdir $PATHH/.tmp/
 
 sleep 1
 clear
@@ -161,7 +161,7 @@ install_json=$(cat <<EOF
 EOF
 )
 
-echo $install_json >> $PATHH/.tpm/.install.json
+echo $install_json >> $PATHH/.tmp/.install.json
 # DISK SETUP
 echo "####################################"
 echo "###                              ###"
