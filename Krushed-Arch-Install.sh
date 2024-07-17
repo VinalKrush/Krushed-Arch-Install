@@ -1,4 +1,70 @@
 #!/usr/bin/env bash
+# START UP
+echo "##################################"
+echo "###                            ###"
+echo "###    KRUSHED ARCH INSTALL    ###"
+echo "###                            ###"
+echo "##################################"
+echo ""
+echo "Loading:"
+echo "[*--------------------------------]"
+
+sleep 3
+clear
+
+echo "##################################"
+echo "###                            ###"
+echo "###    KRUSHED ARCH INSTALL    ###"
+echo "###                            ###"
+echo "##################################"
+echo ""
+echo "Loading:"
+echo "[******---------------------------]"
+
+sleep 7
+clear
+
+echo "##################################"
+echo "###                            ###"
+echo "###    KRUSHED ARCH INSTALL    ###"
+echo "###                            ###"
+echo "##################################"
+echo ""
+echo "Loading:"
+echo "[*******************--------------]"
+
+sleep 1
+clear
+
+echo "##################################"
+echo "###                            ###"
+echo "###    KRUSHED ARCH INSTALL    ###"
+echo "###                            ###"
+echo "##################################"
+echo ""
+echo "Loading:"
+echo "[*******************************--]"
+
+sleep 3
+clear
+
+echo "##################################"
+echo "###                            ###"
+echo "###    KRUSHED ARCH INSTALL    ###"
+echo "###                            ###"
+echo "##################################"
+echo ""
+echo "Loading:"
+echo "[*********************************]"
+echo ""
+echo "WELCOME"
+sleep 5
+echo "Krushed Installer v0.0.1 By Vinal Krush"
+sleep 5
+clear
+
+sed -i 's/^#ParallelDownloads = 5/ParallelDownloads = 20/' /etc/pacman.conf
+pacman -Sy
 loadkeys us
 timedatectl
 clear
@@ -22,21 +88,12 @@ clear
 lsblk
 echo "Please enter the drive you want to install linux on: (Example: /dev/nvme0n1 or /dev/sda)"
 read SYSDRIVE
-echo "!!WARNING!! YOU ARE ABOUT TO WIPE THIS DRIVE, ARE YOU SURE YOU WANT TO CONTINUE (y/n)?"
-read PERM
+clear
 
-if [[ $PERM == 'n' ]]
-then
-	clear
-	echo "You Have Cancelled The Installation"
-	exit
-elif [[ $PERM == 'y' ]]
-then
-	clear
-else
-	clear
-	echo "INVALID OPTION. CACELLED"
-	exit
-fi
-
-echo "yesyyesyesy"
+echo "Please choose CPU platform"
+echo "1. AMD"
+echo "2. INTEL"
+read CPUPLAT
+clear
+exit
+# DISK SETUP
