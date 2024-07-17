@@ -75,7 +75,7 @@ sleep 2
 clear
 cd			
 
-cp -f $PATHH/src/R/etc/pacman.conf /etc/
+cp -rf $PATHH/src/R/etc/pacman.conf /etc/
 pacman -Sy
 loadkeys us
 timedatectl
@@ -366,8 +366,8 @@ clear
 
 pacstrap -K /mnt base base-devel jq
 mkdir -p /mnt/.Krushed-Installer/
-cp -f $PATHH/.tmp/.install.json /mnt/.Krushed-Installer/
-cp -f $PATHH/src/lightdm /mnt/.Krushed-Installer/
+cp -rf $PATHH/.tmp/.install.json /mnt/.Krushed-Installer/
+cp -rf $PATHH/src/lightdm /mnt/.Krushed-Installer/
 sleep 2
 clear
 
@@ -385,7 +385,7 @@ $PATHH/src/kernels/kernel.sh
 
 chmod +rwx $PATHH/src/R/etc/sudoers
 
-cp -f $PATHH/src/R/etc/ /mnt/etc/
+cp -rf $PATHH/src/R/etc/ /mnt/etc/
 
 chmod -wx /mnt/etc/sudoers
 
@@ -456,15 +456,15 @@ clear
 # Base System Setup
 touch /mnt/.Krushed-Installer/THANK YOU FOR USING KRUSHED INSTALLER
 touch /mnt/.Krushed-Installer/IT IS SAFE TO DELETE THIS FOLDER
-cp -f $PATHH/src/base-install.sh /mnt/.Krushed-Installer/
-cp -f $PATHH/src/krushed-install.sh /mnt/.Krushed-Installer/
-cp -f $PATHH/src/user-install.sh /mnt/.Krushed-Installer/
-cp -f $PATHH/src/lightdm /mnt/.Krushed-Installer/
+cp -rf $PATHH/src/base-install.sh /mnt/.Krushed-Installer/
+cp -rf $PATHH/src/krushed-install.sh /mnt/.Krushed-Installer/
+cp -rf $PATHH/src/user-install.sh /mnt/.Krushed-Installer/
+cp -rf $PATHH/src/lightdm /mnt/.Krushed-Installer/
 chmod +x /mnt/.Krushed-Installer/base-install.sh
 chmod +x /mnt/.Krushed-Installer/krushed-install.sh
 chmod +x /mnt/.Krushed-Installer/user-install.sh
 MIRROR="us"
-cp -f $PATHH/mirrors/${MIRROR}/mirrorlist /mnt/etc/pacman.d/
+cp -rf $PATHH/mirrors/${MIRROR}/mirrorlist /mnt/etc/pacman.d/
 
 clear
 echo "-----------------------------------------------------------------------------------------------------"
@@ -482,7 +482,7 @@ clear
 
 arch-chroot /mnt bash /mnt/.Krushed-Installer/base-install.sh
 
-cp -f $PATHH/home/user/.zshrc /mnt/home/$USER/
+cp -rf $PATHH/home/user/.zshrc /mnt/home/$USER/
 
 clear
 echo "-----------------------------------------------------------------------------------------------------"

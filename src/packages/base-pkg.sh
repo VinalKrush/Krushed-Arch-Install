@@ -23,8 +23,7 @@ pacstrap -K /mnt grub os-prober efibootmgr vim git xorg xorg-server openssh wayl
 if [[ $CPUPLAT == '1' ]]
 then
 	pacstrap -K /mnt amd-ucode
-elif [[ $CPUPLAT == '2' ]]
-then
+else
 	pacstrap -K /mnt intel-ucode
 fi
 clear
