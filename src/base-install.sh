@@ -20,7 +20,7 @@ BETTERFOX= jq .BETTERFOX /var/.tpm/.Krushed-Installer/.install.json
 KERN= jq .KERN /var/.tpm/.Krushed-Installer/.install.json
 DPD= jq .DPD /var/.tpm/.Krushed-Installer/.install.json
 KRUSHED= jq .KRUSHED /var/.tpm/.Krushed-Installer/.install.json
-PATH= jq .PATH /var/.tpm/.Krushed-Installer/.install.json
+PATHH= jq .PATHH /var/.tpm/.Krushed-Installer/.install.json
 INSTALLER_PATH= jq .INSTALLER_PATH /var/.tpm/.Krushed-Installer/.install.json
 
 cd

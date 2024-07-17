@@ -12,9 +12,9 @@ echo ""
 echo "Loading:"
 echo "[*--------------------------------]"
 
-PATH=${PWD}
+PATHH=${PWD}	
 pacman -Sy --noconfirm --nopregressbar
-mkdir $PATH/.tpm/
+mkdir $PATHH/.tpm/
 
 sleep 1
 clear
@@ -40,7 +40,7 @@ echo ""
 echo "Loading:"
 echo "[*******************--------------]"
 
-touch $PATH/.tmp/.install.json
+touch $PATHH/.tmp/.install.json
 pacman -S --needed --noconfirm --noprogressbar jq
 sleep 1
 clear
@@ -73,7 +73,7 @@ sleep 2
 clear
 cd			
 
-cp -f $PATH/src/R/etc/pacman.conf /etc/
+cp -f $PATHH/src/R/etc/pacman.conf /etc/
 pacman -Sy
 loadkeys us
 timedatectl
@@ -153,13 +153,13 @@ install_json=$(cat <<EOF
     	"KERN": "${KERN}",
     	"DPD": "${DPD}",
     	"KRUSHED": "${KRUSHED}",
-		"PATH": "${PATH}",
+		"PATHH": "${PATHH}",
 		"INSTALLER_PATH": "/var/.tmp/.Krushed-Installer/"
 	}
 EOF
 )
 
-echo $install_json >> $PATH/.tpm/.install.json
+echo $install_json >> $PATHH/.tpm/.install.json
 # DISK SETUP
 echo "####################################"
 echo "###                              ###"
@@ -366,8 +366,8 @@ clear
 
 pacstrap -K /mnt base base-devel jq
 mkdir -p /mnt/var/.tmp/.Krushed-Installer/
-cp -f $PATH/.tmp/.install.json /mnt/var/.tmp/.Krushed-Installer/
-cp -f $PATH/src/lightdm /mnt/var/.tmp/.Krushed-Installer/
+cp -f $PATHH/.tmp/.install.json /mnt/var/.tmp/.Krushed-Installer/
+cp -f $PATHH/src/lightdm /mnt/var/.tmp/.Krushed-Installer/
 sleep 2
 clear
 
@@ -379,13 +379,13 @@ echo "---                                                                   ---"
 echo "---                                                                   ---"
 echo "-------------------------------------------------------------------------"
 
-chmod +x $PATH/src/kernels/kernel.sh
-$PATH/src/kernels/kernel.sh
+chmod +x $PATHH/src/kernels/kernel.sh
+$PATHH/src/kernels/kernel.sh
 
 
-chmod +rwx $PATH/src/R/etc/sudoers
+chmod +rwx $PATHH/src/R/etc/sudoers
 
-cp -f $PATH/src/R/etc/ /mnt/etc/
+cp -f $PATHH/src/R/etc/ /mnt/etc/
 
 chmod -wx /mnt/etc/sudoers
 
@@ -415,8 +415,8 @@ echo "---                                                                   ---"
 echo "-------------------------------------------------------------------------"
 sleep 2
 
-chmod +x $PATH/src/dpd/dpd.sh
-$PATH/src/dpd/dpd.sh
+chmod +x $PATHH/src/dpd/dpd.sh
+$PATHH/src/dpd/dpd.sh
 
 sleep 2
 clear
@@ -444,8 +444,8 @@ echo "---                                                                   ---"
 echo "-------------------------------------------------------------------------"
 sleep 2
 
-chmod +x $PATH/src/packages/base-pkg.sh
-$PATH/src/packages/base-pkg.sh
+chmod +x $PATHH/src/packages/base-pkg.sh
+$PATHH/src/packages/base-pkg.sh
 
 sleep 2
 
@@ -456,15 +456,15 @@ clear
 # Base System Setup
 touch /mnt/var/.tmp/.Krushed-Installer/THANK YOU FOR USING KRUSHED INSTALLER
 touch /mnt/var/.tmp/.Krushed-Installer/IT IS SAFE TO DELETE THIS FOLDER
-cp -f $PATH/src/base-install.sh /mnt/var/.tmp/.Krushed-Installer/
-cp -f $PATH/src/krushed-install.sh /mnt/var/.tmp/.Krushed-Installer/
-cp -f $PATH/src/user-install.sh /mnt/var/.tmp/.Krushed-Installer/
-cp -f $PATH/src/lightdm /mnt/var/.tmp/.Krushed-Installer/
+cp -f $PATHH/src/base-install.sh /mnt/var/.tmp/.Krushed-Installer/
+cp -f $PATHH/src/krushed-install.sh /mnt/var/.tmp/.Krushed-Installer/
+cp -f $PATHH/src/user-install.sh /mnt/var/.tmp/.Krushed-Installer/
+cp -f $PATHH/src/lightdm /mnt/var/.tmp/.Krushed-Installer/
 chmod +x /mnt/var/.tmp/.Krushed-Installer/base-install.sh
 chmod +x /mnt/var/.tmp/.Krushed-Installer/krushed-install.sh
 chmod +x /mnt/var/.tmp/.Krushed-Installer/user-install.sh
 MIRROR="us"
-cp -f $PATH/mirrors/${MIRROR}/mirrorlist /mnt/etc/pacman.d/
+cp -f $PATHH/mirrors/${MIRROR}/mirrorlist /mnt/etc/pacman.d/
 
 clear
 echo "-----------------------------------------------------------------------------------------------------"
@@ -482,7 +482,7 @@ clear
 
 arch-chroot /mnt bash /mnt/var/.tmp/.Krushed-Installer/base-install.sh
 
-cp -f $PATH/home/user/.zshrc /mnt/home/$USER/
+cp -f $PATHH/home/user/.zshrc /mnt/home/$USER/
 
 clear
 echo "-----------------------------------------------------------------------------------------------------"
