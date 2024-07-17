@@ -515,5 +515,5 @@ then
 	clear
 	echo "Install Complete"
 	echo "Feel Free To Restart Whenever You Like"
-	arch-chroot /mnt bash su ${USER}
+	arch-chroot /mnt bash "su ${USER}"
 fi
