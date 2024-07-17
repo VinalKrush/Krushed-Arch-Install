@@ -12,8 +12,9 @@ echo ""
 echo "Loading:"
 echo "[*--------------------------------]"
 
-PATHH=${PWD}	
-pacman -Sy --noconfirm --nopregressbar
+PATHH=${PWD}
+echo "Updating Package Lists"	
+pacman -Sy --noconfirm
 mkdir $PATHH/.tpm/
 
 sleep 1
@@ -41,7 +42,8 @@ echo "Loading:"
 echo "[*******************--------------]"
 
 touch $PATHH/.tmp/.install.json
-pacman -S --needed --noconfirm --noprogressbar jq
+echo "Installing Dependency"
+pacman -S --needed --noconfirm jq
 sleep 1
 clear
 
