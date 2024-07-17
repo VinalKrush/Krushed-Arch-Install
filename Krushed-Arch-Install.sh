@@ -131,25 +131,25 @@ clear
 cfdisk ${SYSDRIVE}
 clear
 
-sleep 1
+sleep .2
 lsblk
 echo "Please Define The Boot Partiion (Example /dev/sda1 or /dev/nvme0n1p1)"
 read BOOT
 clear
 
-sleep 1
+sleep .2
 lsblk
 echo "Please Define The Swap Partition (Example /dev/sda2 or /dev/nvme0n1p2)"
 read SWAP
 clear
 
-sleep 1
+sleep .2
 lsblk
 echo "Please Define The Root Partition (Example /dev/sda3 or /dev/nvme0n1p3)"
 read ROOT
 clear
 
-sleep 1
+sleep .2
 lsblk
 echo "Please Define The Home Partition (Example /dev/sda4 or /dev/nvme0n1p4)"
 read HOME
@@ -441,6 +441,7 @@ then
 elif [[ $CPUPLAT == '2' ]]
 then
 	pacstrap -K /mnt intel-ucode
+fi
 
 sleep 2
 
