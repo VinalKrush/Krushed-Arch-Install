@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 # START UP
 PATH=${PWD}
 clear
