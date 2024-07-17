@@ -11,6 +11,7 @@ echo ""
 echo "Loading:"
 echo "[*--------------------------------]"
 
+pacman -Sy --noconfirm --nopregressbar
 mkdir $PATH/.tpm/
 
 sleep 1
@@ -38,7 +39,7 @@ echo "Loading:"
 echo "[*******************--------------]"
 
 touch $PATH/.tmp/.install.json
-
+pacman -S --needed --noconfirm --noprogressbar jq
 sleep 1
 clear
 
@@ -137,6 +138,26 @@ echo "2. Minimal"
 read KRUSHED
 clear
 
+# Making Tmp File For Other .sh
+install_json=$(cat <<EOF
+	{
+	    "SYSNAME": "${SYSNAME}",
+	    "USER": "${USER}",
+		"PASSWORD": "${PASSWORD}",
+		"ROOTPASSWORD": "${ROOTPASSWORD}",
+    	"SYSDRIVE": "${SYSDRIVE}",
+    	"CPUPLAT": "${CPUPLAT}",
+    	"BETTERFOX": "${BETTERFOX}",
+    	"KERN": "${KERN}",
+    	"DPD": "${DPD}",
+    	"KRUSHED": "${KRUSHED}",
+		"PATH": "${PATH}",
+		"INSTALLER_PATH": "/var/.tmp/.Krushed-Installer/"
+	}
+EOF
+)
+
+echo $install_json >> $PATH/.tpm/.install.json
 # DISK SETUP
 echo "####################################"
 echo "###                              ###"
@@ -341,7 +362,10 @@ echo "|@@@@@@@@@@---------------------------------------------------------------
 sleep 5
 clear
 
-pacstrap -K /mnt base base-devel
+pacstrap -K /mnt base base-devel jq
+mkdir -p /mnt/var/.tmp/.Krushed-Installer/
+cp -f $PATH/.tmp/.install.json /mnt/var/.tmp/.Krushed-Installer/
+cp -f $PATH/src/lightdm /mnt/var/.tmp/.Krushed-Installer/
 sleep 2
 clear
 
@@ -357,9 +381,11 @@ chmod +x $PATH/src/kernels/kernel.sh
 $PATH/src/kernels/kernel.sh
 
 
+chmod +rwx $PATH/src/R/etc/sudoers
 
 cp -f $PATH/src/R/etc/ /mnt/etc/
-cp -f $PATH/src/R/sudoers /mnt/etc
+
+chmod -wx /mnt/etc/sudoers
 
 sleep 2
 clear
@@ -426,13 +452,15 @@ genfstab -U /mnt >> /mnt/etc/fstab
 clear
 
 # Base System Setup
-mkdir -p /mnt/home/$USER/Krushed-Installer
-touch /mnt/home/$USER/Krushed-Installer/THANK YOU FOR USING KRUSHED INSTALLER
-touch /mnt/home/$USER/Krushed-Installer/IT IS SAFE TO DELETE THIS FOLDER
-cp -f $PATH/src/base-install.sh /mnt/home/$USER/Krushed-Installer
-cp -f $PATH/src/krushed-install.sh /mnt/home/$USER/Krushed-Installer
-chmod +x /mnt/home/$USER/Krushed-Installer/base-install.sh
-chmod +x /mnt/home/$USER/Krushed-Installer/krushed-install.sh
+touch /mnt/var/.tmp/.Krushed-Installer/THANK YOU FOR USING KRUSHED INSTALLER
+touch /mnt/var/.tmp/.Krushed-Installer/IT IS SAFE TO DELETE THIS FOLDER
+cp -f $PATH/src/base-install.sh /mnt/var/.tmp/.Krushed-Installer/
+cp -f $PATH/src/krushed-install.sh /mnt/var/.tmp/.Krushed-Installer/
+cp -f $PATH/src/user-install.sh /mnt/var/.tmp/.Krushed-Installer/
+cp -f $PATH/src/lightdm /mnt/var/.tmp/.Krushed-Installer/
+chmod +x /mnt/var/.tmp/.Krushed-Installer/base-install.sh
+chmod +x /mnt/var/.tmp/.Krushed-Installer/krushed-install.sh
+chmod +x /mnt/var/.tmp/.Krushed-Installer/user-install.sh
 MIRROR="us"
 cp -f $PATH/mirrors/${MIRROR}/mirrorlist /mnt/etc/pacman.d/
 
@@ -450,7 +478,7 @@ echo "|@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-----------------------
 sleep 5
 clear
 
-arch-chroot /mnt bash /mnt/home/$USER/Krushed-Installer/base-install.sh
+arch-chroot /mnt bash /mnt/var/.tmp/.Krushed-Installer/base-install.sh
 
 cp -f $PATH/home/user/.zshrc /mnt/home/$USER/
 
@@ -470,16 +498,20 @@ sleep 10
 clear
 
 echo "The install process is complete."
-echo "Would you like to exit now? (y/n)"
+echo "Would you like to reboot now? (y/n)"
 read REBOOTSYS
 if [[ $REBOOTSYS == 'y']]
 then
 	clear
 	echo "Unplug the Arch ISO USB, and press ENTER"
 	read GOODTOREBOOT
+	swapoff -A
+	umount -R /mnt
 	reboot now
 elif [[ $REBOOTSYS == 'n']]
+then
 	clear
 	echo "Install Complete"
 	echo "Feel Free To Restart Whenever You Like"
+	arch-chroot /mnt bash su ${USER}
 fi
