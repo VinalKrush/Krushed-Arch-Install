@@ -112,7 +112,7 @@ echo "###                              ###"
 echo "###          DISK SETUP          ###"
 echo "###                              ###"
 echo "####################################"
-sleep 3
+sleep 1
 echo "It is recommended to partition your disk like this or else the installer may format the partitions wrong"
 echo ""
 echo ""
@@ -128,26 +128,31 @@ wipefs -a ${SYSDRIVE}
 cfdisk ${SYSDRIVE}
 clear
 
+sleep 1
 lsblk
-echo "Boot Partiion (Example /dev/sda1 or /dev/nvme0n1p1)"
+echo "Please Define The Boot Partiion (Example /dev/sda1 or /dev/nvme0n1p1)"
 read BOOT
 clear
 
+sleep 1
 lsblk
-echo "Swap Partition (Example /dev/sda2 or /dev/nvme0n1p2)"
+echo "Please Define The Swap Partition (Example /dev/sda2 or /dev/nvme0n1p2)"
 read SWAP
 clear
 
+sleep 1
 lsblk
-echo "Root Partition (Example /dev/sda3 or /dev/nvme0n1p3)"
+echo "Please Define The Root Partition (Example /dev/sda3 or /dev/nvme0n1p3)"
 read ROOT
 clear
 
+sleep 1
 lsblk
-echo "Home Partition (Example /dev/sda4 or /dev/nvme0n1p4)"
+echo "Please Define The Home Partition (Example /dev/sda4 or /dev/nvme0n1p4)"
 read HOME
 clear
 
+sleep 1
 echo "####################################"
 echo "###                              ###"
 echo "###          FORMATTING          ###"
@@ -237,7 +242,7 @@ echo "###                              ###"
 echo "####################################"
 echo ""
 echo "Loading:"
-echo "[$$$$$$$$$$$######################]"
+echo "[///////////######################]"
 echo "This May Take A Moment"
 echo ""
 echo ""
@@ -253,7 +258,7 @@ echo "###                              ###"
 echo "####################################"
 echo ""
 echo "Loading:"
-echo "[$$$$$$$$$$$$$$$$$$$$$$###########]"
+echo "[//////////////////////###########]"
 echo "This May Take A Moment"
 echo ""
 echo ""
@@ -269,8 +274,8 @@ echo "###                              ###"
 echo "####################################"
 echo ""
 echo "Loading:"
-echo "[$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$]"
-echo "This May Take A Moment"
+echo "[/////////////////////////////////]"
+echo "Done! Please Wait!"
 echo ""
 echo ""
 echo ""
@@ -346,9 +351,9 @@ elif [[ $KERN == '3' ]]
 then
 	pacstrap -K  /mnt linux-hardened linux-firmware linux-headers
 fi
-cp -f ./etc/pacman.conf /mnt/etc/
-cp -f ./etc/mkinitcpio.conf /mnt/etc/
-cp -f ./etc/makepkg.conf /mnt/etc/
+cp -f /root/etc/pacman.conf /mnt/etc/
+cp -f /root/etc/mkinitcpio.conf /mnt/etc/
+cp -f /root/etc/makepkg.conf /mnt/etc/
 
 sleep 2
 clear
