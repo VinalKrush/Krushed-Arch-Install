@@ -666,7 +666,6 @@ REALEND
 
 su $USER -c /mnt/home/$USER/Krushed-Installer/user-installs.sh
 exit
-REALEND
 
 arch-chroot /mnt sh /mnt/home/$USER/Krushed-Installer/krushed-installer.sh
 
