@@ -97,6 +97,11 @@ echo "Please Enter A Root Password: (Leave blank to disable root) (Password Is H
 read -s ROOTPASSWORD
 clear
 
+lsblk
+echo "Please Enter The Drive You Want To Install Linux On: (Example: /dev/nvme0n1 or /dev/sda)"
+read SYSDRIVE
+clear
+
 echo "Please Choose CPU Platform"
 echo "1. AMD"
 echo "2. INTEL"
@@ -157,24 +162,184 @@ EOF
 
 echo $install_json >> $PATHH/.tmp/.install.json
 # DISK SETUP
-wipefs -a /dev/nvme0n1
-wipefs -a /dev/sda
-cfdisk /dev/nvme0n1
-cfdisk /dev/sda
+echo "####################################"
+echo "###                              ###"
+echo "###          DISK SETUP          ###"
+echo "###                              ###"
+echo "####################################"
+sleep 1
+echo "It is recommended to partition your disk like this or else the installer may format the partitions wrong"
+echo ""
+echo ""
+echo "sda1 - FAT32	- BOOT"
+echo "sda2 - SWAP	- SWAP"
+echo "sda3 - EXT4	- ROOT"
+echo "sda4 - EXT4	- HOME"
+sleep 2
+echo ""
+echo "Press Enter To Continue (Note This Will Wipe Your Drive) Or Press CTRL + C To Cancel"
+read ENTER
+clear
+wipefs -a ${SYSDRIVE}
+sleep 1
+clear
+cfdisk ${SYSDRIVE}
+clear
 
-mkfs.vfat -n BOOT -F 32 /dev/nvme0n1p1
-mkfs.ext4 -L Krush-Root /dev/nvme0n1p2
-mkfs.ext4 -L Krush /dev/nvme0n1p3
-mkfs.ext4 -L Games /dev/sda1
-mkfs.ntfs -f -L Windows-Games /dev/sda2
+sleep .2
+lsblk
+echo "Please Define The Boot Partiion (Example /dev/sda1 or /dev/nvme0n1p1)"
+read BOOT
+clear
 
-mount -m /dev/nvme0n1p2 /mnt
-mount -m /dev/nvme0n1p3 /mnt/home
-mount -m /dev/nvme0n1p1 /mnt/boot/efi
-mount -m /dev/sda1 /mnt/home/${USER}/Games/
-mount -m /dev/sda2 mnt/home/${USER}/.Windows-Games/
-mkdir -p /mnt/home/${USER}/.Windows-Games/Steam
-mkdir -p /mnt/home/${USER}/.Windows-Games/Other
+sleep .2
+lsblk
+echo "Please Define The Swap Partition (Example /dev/sda2 or /dev/nvme0n1p2)"
+read SWAP
+clear
+
+sleep .2
+lsblk
+echo "Please Define The Root Partition (Example /dev/sda3 or /dev/nvme0n1p3)"
+read ROOT
+clear
+
+sleep .2
+lsblk
+echo "Please Define The Home Partition (Example /dev/sda4 or /dev/nvme0n1p4)"
+read HOME
+clear
+
+sleep 1
+echo "####################################"
+echo "###                              ###"
+echo "###          FORMATTING          ###"
+echo "###                              ###"
+echo "####################################"
+echo ""
+echo "Loading:"
+echo "[*********************************]"
+echo "This May Take A Moment"
+echo ""
+echo ""
+echo ""
+echo ""
+mkfs.vfat -n BOOT -F 32 "${BOOT}"
+
+clear
+echo "####################################"
+echo "###                              ###"
+echo "###          FORMATTING          ###"
+echo "###                              ###"
+echo "####################################"
+echo ""
+echo "Loading:"
+echo "[########*************************]"
+echo "This May Take A Moment"
+echo ""
+echo ""
+echo ""
+echo ""
+mkswap -L Swap "${SWAP}"
+swapon "${SWAP}"
+swapon -a
+
+clear
+echo "####################################"
+echo "###                              ###"
+echo "###          FORMATTING          ###"
+echo "###                              ###"
+echo "####################################"
+echo ""
+echo "Loading:"
+echo "[################*****************]"
+echo "This May Take A Moment"
+echo ""
+echo ""
+echo ""
+echo ""
+mkfs.ext4 -L "${SYSNAME}"-Root "${ROOT}"
+
+clear
+echo "####################################"
+echo "###                              ###"
+echo "###          FORMATTING          ###"
+echo "###                              ###"
+echo "####################################"
+echo ""
+echo "Loading:"
+echo "[########################*********]"
+echo "This May Take A Moment"
+echo ""
+echo ""
+echo ""
+echo ""
+mkfs.ext4 -L "${SYSNAME}"-Home "${HOME}"
+
+clear
+echo "####################################"
+echo "###                              ###"
+echo "###          FORMATTING          ###"
+echo "###                              ###"
+echo "####################################"
+echo ""
+echo "Loading:"
+echo "[#################################]"
+echo "This May Take A Moment"
+echo ""
+echo ""
+echo ""
+echo ""
+
+mount --mkdir "${ROOT}" /mnt
+clear
+echo "####################################"
+echo "###                              ###"
+echo "###            MOUNTING          ###"
+echo "###                              ###"
+echo "####################################"
+echo ""
+echo "Loading:"
+echo "[///////////######################]"
+echo "This May Take A Moment"
+echo ""
+echo ""
+echo ""
+echo ""
+
+mount --mkdir "${BOOT}" /mnt/boot/efi
+clear
+echo "####################################"
+echo "###                              ###"
+echo "###            MOUNTING          ###"
+echo "###                              ###"
+echo "####################################"
+echo ""
+echo "Loading:"
+echo "[//////////////////////###########]"
+echo "This May Take A Moment"
+echo ""
+echo ""
+echo ""
+echo ""
+
+mount --mkdir "${HOME}" /mnt/home
+clear
+echo "####################################"
+echo "###                              ###"
+echo "###            MOUNTING          ###"
+echo "###                              ###"
+echo "####################################"
+echo ""
+echo "Loading:"
+echo "[/////////////////////////////////]"
+echo "Done! Please Wait!"
+echo ""
+echo ""
+echo ""
+echo ""
+sleep 2
+clear
 
 echo "-------------------------------------------------------------------------"
 echo "---                                                                   ---"
