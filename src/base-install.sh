@@ -28,12 +28,12 @@ clear
 cd
 clear
 loadkeys us
-pacman -Syu
+pacman -Syu --noconfirm
 clear
 hwclock --systohc
 sed -i 's/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8' /etc/locale.gen
 locale-gen
-echo "LANG=en=US.UTF-8" >> /etc/locale.conf
+echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 echo "${SYSNAME}" > /etc/hostname
 touch /etc/vconsole.conf
 echo "KEYMAP=us" > /etc/vconsole.conf
@@ -49,7 +49,7 @@ clear
 mkinitcpio -P
 clear
 echo root:$ROOTPASSWORD | chpasswd
-useradd -m -G wheel,storage,power,audo $USER
+useradd -m -G wheel,storage,power $USER
 echo $USER:$PASSWORD | chpasswd
 ln -s /usr/bin/vim /usr/bin/vi
 systemctl enable NetworkManager.service sshd.service

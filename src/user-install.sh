@@ -26,6 +26,7 @@ INSTALLER_PATH= jq .INSTALLER_PATH /.Krushed-Installer/.install.json
 clear
 
 clear
+cd
 git clone https://aur.archlinux.org/yay
 cd yay
 makepkg -si --noconfirm
@@ -54,7 +55,8 @@ echo "|@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-------------
 sleep 5
 clear
 
-yay -Syu --needed --noconfirm pipewire lib32-pipewire wireplumber pipewire-audio pipewire-alsa pipewire-pulse pipewire-jack lib32-pipewire-jack fastfetch firefox git zsh vim ldns noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-hack-nerd wget curl xclip unzip unrar gparted gnome-disk-utility gvfs gvfs-afc bpytop os-prober grub-customizer less qpwgraph fuse3 fuse2 alsa-utils btrfs-progs exfat-utils ntfs-3g mkinitcpio-randommac mkinitcpio-archlogo mkinitcpio-numlock mkinitcpio-firmware numlockx qemu libvirt edk2-ovmf virt-manager ebtables dnsmasq
+yay -Syu --needed --noconfirm pipewire lib32-pipewire wireplumber pipewire-audio pipewire-alsa pipewire-pulse pipewire-jack lib32-pipewire-jack fastfetch firefox git zsh vim ldns noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-hack-nerd wget curl xclip unzip unrar gparted gnome-disk-utility gvfs gvfs-afc bpytop os-prober grub-customizer less qpwgraph fuse3 fuse2 alsa-utils btrfs-progs exfat-utils ntfs-3g mkinitcpio-randommac mkinitcpio-archlogo mkinitcpio-numlock mkinitcpio-firmware numlockx
+
 
 # Krushed Packages
 # ark konsole steam lutris flatpak dpkg jre-openjdk jre8-openjdk jre11-openjdk jre17-openjdk jre21-openjdk gnome-calculator fzf ufw lib32-vkd3d lightdm web-greeter plasma vesktop libreoffice-fresh dolphin kvantum ocs-url qemu libvirt edk2-ovmf virt-manager ebtables dnsmasq

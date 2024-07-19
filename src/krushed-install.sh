@@ -23,12 +23,9 @@ DPD= jq .DPD /.Krushed-Installer/.install.json
 KRUSHED= jq .KRUSHED /.Krushed-Installer/.install.json
 PATHH= jq .PATHH /.Krushed-Installer/.install.json
 INSTALLER_PATH= jq .INSTALLER_PATH /.Krushed-Installer/.install.json
-clear
-
-clear
 cd
-
 clear
+
 echo "-----------------------------------------------------------------------------------------------------"
 echo "---                                                                                               ---"
 echo "---                                                                                               ---"
@@ -42,7 +39,7 @@ echo "|@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@------------------
 sleep 5
 clear
 yay -Syu --needed --noconfirm ark konsole steam lutris flatpak dpkg jre-openjdk jre8-openjdk jre11-openjdk jre17-openjdk jre21-openjdk gnome-calculator fzf ufw lib32-vkd3d lightdm web-greeter plasma vesktop libreoffice-fresh dolphin kvantum ocs-url qemu libvirt edk2-ovmf virt-manager ebtables dnsmasq
-
+clear
 yay -Rns --needed --noconfirm sddm sddm-kcm
 
 # LightDM
