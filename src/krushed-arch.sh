@@ -6,6 +6,8 @@ main_install() {
     cp -rf ./etc/ /etc/
     clear
     sudo pacman -Sy
+    timedatectl
+    hwclock --systohc
     
     # Basic Vars
     HOST_N=$(dialog --no-cancel --title "Hostname" --inputbox "Please Enter A Hostname" 5 70 3>&1 1>&2 2>&3 3>&-)
@@ -33,6 +35,7 @@ EOF
     sudo rm install.json
     touch install.json
     echo $install_json >> install.json
+    clear
 
     # Base Install
     dialog --no-ok --no-cancel --title "Installing Arch For \"${USER_N}\" ON \"${HOST_N}\"" --prgbox "pacstrap -K -P /mnt base base-devel jq dialog" 20 70
