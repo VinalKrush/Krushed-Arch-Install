@@ -35,7 +35,7 @@ EOF
     echo $install_json >> install.json
 
     # Base Install
-    dialog --no-ok --no-cancel --title "Installing Arch For \"${USER_N}\" ON \"${HOST_N}\"" --prgbox "pacstrap -K -P base base-devel jq dialog" 20 70
+    dialog --no-ok --no-cancel --title "Installing Arch For \"${USER_N}\" ON \"${HOST_N}\"" --prgbox "pacstrap -K -P /mnt base base-devel jq dialog" 20 70
     mkdir -p /mnt/.kinstall
     cp -rf ./* /mnt/.kinstall/
     cp -rf ./etc/ /mnt/etc/
